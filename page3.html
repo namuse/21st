@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link href='https://fonts.googleapis.com/css?family=Spicy Rice' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Bellefair' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Caramel' rel='stylesheet'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21</title>
+    <style>
+        body {
+          font-family: 'Bellefair';
+          font-size: 22px;
+          background-color: gray;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Spicy Rice';
+  font-size: 42px;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+label, textarea, input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Caramel';
+  font-size: 32px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Wiltord's Guestbook!</h1>
+  <form id="guestbookForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    <label for="message">Message:</label>
+    <textarea id="message" required></textarea>
+    <button style=" font-family: 'Chonburi';font-size: 22px;background-color:black;border-radius: 10px;color: white;" type="submit">Submit</button>
+  </form>
+  <div id="guestbookEntries"></div>
+  <a href="page4.html">
+    <button style=" font-family: 'Chonburi';font-size: 22px;background-color:black;border-radius: 10px;color: white;">>></button>
+ </a>
+  <script>
+    document.getElementById('guestbookForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var nameInput = document.getElementById('name');
+  var messageInput = document.getElementById('message');
+  var guestbookEntries = document.getElementById('guestbookEntries');
+
+  var entry = document.createElement('div');
+  entry.innerHTML = '<h3>' + nameInput.value + '</h3>' +
+                    '<p>' + messageInput.value + '</p>';
+
+  guestbookEntries.appendChild(entry);
+
+  
+  var guestbookData = JSON.parse(localStorage.getItem('guestbook')) || [];
+  guestbookData.push({ name: nameInput.value, message: messageInput.value });
+  localStorage.setItem('guestbook', JSON.stringify(guestbookData));
+
+  nameInput.value = '';
+  messageInput.value = '';
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var guestbookEntries = document.getElementById('guestbookEntries');
+  var guestbookData = JSON.parse(localStorage.getItem('guestbook')) || [];
+
+  guestbookData.forEach(function(entryData) {
+    var entry = document.createElement('div');
+    entry.innerHTML = '<h3>' + entryData.name + '</h3>' +
+                      '<p>' + entryData.message + '</p>';
+    guestbookEntries.appendChild(entry);
+  });
+});
+  </script>
+</body>
+</html>

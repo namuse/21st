@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>21</title>
+  <link rel="stylesheet" href="styles/g.css">
+  <link href='https://fonts.googleapis.com/css?family=Spicy Rice' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Caramel' rel='stylesheet'>
+</head>
+<body>
+  <h3 class="heading">video gallery</h3>
+  <div class="container">
+    <div class="main-video">
+      <div class="video">
+        <video src="c:\Users\sally\Downloads\WhatsApp Video 2024-01-29 at 20.44.57.mp4"controls muted autoplay width="500" height="500"></video >
+          <h3 class="title"> 1.video</h3>
+      </div>
+    </div>
+    <div class="video-list">
+      <div>
+
+      </div>
+      <div class="vid active">
+        <video class="video"src="c:\Users\sally\Downloads\WhatsApp Video 2024-01-29 at 20.44.57.mp4"  muted ></video >
+          <h3 class="title"> 1.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video"src="c:\Users\sally\Downloads\WhatsApp Video 2024-01-29 at 20.44.57 (1).mp4" muted ></video >
+          <h3 class="title"> 2.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video" src="c:\Users\sally\Downloads\WhatsApp Video 2024-01-29 at 20.44.57 (2).mp4" muted ></video >
+          <h3 class="title"> 3.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video" src="c:\Users\sally\Downloads\WhatsApp Video 2024-01-29 at 20.44.57 (3).mp4"  muted ></video >
+          <h3 class="title"> 4.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video" src="c:\Users\sally\Downloads\WhatsApp Video 2024-02-19 at 16.26.05.mp4" muted ></video >
+          <h3 class="title"> 5.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video" src="c:\Users\sally\Downloads\WhatsApp Video 2024-03-28 at 20.45.27.mp4"  muted ></video >
+          <h3 class="title"> 6.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video" src="c:\Users\sally\Downloads\WhatsApp Video 2024-01-29 at 20.44.57 (5).mp4" muted ></video >
+          <h3 class="title"> 7.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video" src="c:\Users\sally\Downloads\WhatsApp Video 2024-01-29 at 21.42.24.mp4" muted ></video >
+          <h3 class="title"> 8.video</h3>
+      </div>
+      <div class="vid">
+        <video class="video" src="WhatsApp Video 2024-01-29 at 20.44.57 (4).mp4" muted ></video >
+          <h3 class="title"> 9.video</h3>
+      </div>
+    </div>
+  </div>
+  <a href="page5.html">
+    <button style=" font-family: 'Chonburi';font-size: 22px;background-color:black;border-radius: 10px;color: white;">>></button>
+ </a>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  let listVideos = document.querySelectorAll('.video-list .vid');
+  let mainVideo = document.querySelector('.main-video video');
+  let title = document.querySelector('.main-video .title');
+  let counter = 1; 
+
+  listVideos.forEach(video => {
+    video.onclick = () => {
+      listVideos.forEach(vid => vid.classList.remove('active'));
+      video.classList.add('active');
+      if (video.classList.contains('active')) {
+        let src = video.children[0].getAttribute('src');
+        mainVideo.src = src;
+
+       
+        title.textContent = counter + ".video";
+        counter++; 
+      }
+    };
+  });
+});
+  </script>
+</body>
+</html>
